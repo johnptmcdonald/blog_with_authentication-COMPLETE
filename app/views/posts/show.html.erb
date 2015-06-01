@@ -7,7 +7,7 @@
 
 
 <% @post.comments.each do |comment| %>
-	<%= comment.body %>
+	<%= comment.body %> - posted by <%= comment.user %>
 	<% if comment.user == current_user %>
 		<%= link_to 'edit', edit_post_comment_path(@post,comment) %>
 	<% end %>
