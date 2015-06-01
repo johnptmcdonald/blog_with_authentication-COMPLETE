@@ -1,0 +1,21 @@
+<h1>This is the post's show page</h1>
+
+<%= @post.title %><br>
+<%= @post.body %><br>
+
+<br>
+<% @post.comments.each do |comment| %>
+	<%= comment.body %>
+	<%= link_to 'edit', edit_post_comment_path(@post,comment) %>
+	<br>
+<% end %>
+
+<br>
+<%= form_for [@post, Comment.new] do |f| %>
+    <div>
+        <%= f.label :body, "New comment:" %>
+        <%= f.text_area :body %>
+    </div>
+    <br>
+    <%= f.submit "Add your comment!" %>
+<% end %>
