@@ -4,11 +4,16 @@
 <%= @post.body %><br>
 
 <br>
+
+
 <% @post.comments.each do |comment| %>
 	<%= comment.body %>
-	<%= link_to 'edit', edit_post_comment_path(@post,comment) %>
+	<% if comment.user == current_user %>
+		<%= link_to 'edit', edit_post_comment_path(@post,comment) %>
+	<% end %>
 	<br>
 <% end %>
+
 
 <br>
 <%= form_for [@post, Comment.new] do |f| %>
